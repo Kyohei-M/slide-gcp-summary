@@ -20,8 +20,6 @@ layout: false
 * クラウドサービス未経験
 * GCP未経験
 
-<br/>
-
 ## 目標
 
 * GCPの大まかな機能を把握
@@ -30,11 +28,9 @@ layout: false
 ---
 ## アウトライン
 
-.zoom1[
 * GCPの概要
 * GCPの機能
 * GCEを使用したVM作成
-]
 
 ---
 class: center, middle, inverse
@@ -52,13 +48,23 @@ class: center, middle, inverse
 * 世界中に17リージョン、52ゾーンを展開
 
 ---
+## 各社クラウドサービス
+
+* Microsoft Azure
+* Google Cloud Platform(GCP)
+* Amazon Web Service(AWS)
+* IBM Cloud
+* Oracle Cloud
+
+etc...
+
+---
 class: center, middle, inverse
 # GCPの機能
 
 ---
 ## GCPの機能
 
-.zoom1[
 * App Engine
 * Compute Engine
 * Kubernetes Engine
@@ -66,9 +72,9 @@ class: center, middle, inverse
 * ML Engine
 
 etc...
-]
 
 ---
+.zoom1[
 ## App Engine(GAE)
 
 公式サイト  
@@ -81,6 +87,7 @@ etc...
 * SQLに似たデータストア、GQLを使用
 
 ![App Engine](https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/Google_App_Engine.svg/220px-Google_App_Engine.svg.png)
+]
 
 ---
 ## Compute Engine(GCE)
@@ -120,9 +127,11 @@ class: center, middle, inverse
 # GCEを使用したVM作成
 
 ---
+.zoom1[
 ## プロジェクトの作成
 
 ![NewProject](NewProject.png)
+]
 
 ---
 ## Cloud Shellの起動
@@ -131,16 +140,16 @@ class: center, middle, inverse
 
 ![OpenShell](OpenShell.png)
 
-<br/>
-
 画面下にShellが起動
 
+.zoom1[
 ```console
 Welcome to Cloud Shell! Type "help" to get started.
 Your Cloud Platform project in this session is set to docker-book-223015.
 Use “gcloud config set project [PROJECT_ID]” to change to a different project.
 account@cloudshell:~ (docker-book-223015)$
 ```
+]
 
 ---
 ## VMの作成
@@ -148,21 +157,24 @@ account@cloudshell:~ (docker-book-223015)$
 Docker Machineを作成する  
 (「プログラマのためのDocker教科書 第2版」より)
 
+.zoom1[
 ```console
 $ docker-machine create --driver google \
   --google-project $PROJECT_ID \
   --google-zone asia-northeast1-a \
   --google-machine-type f1-micro \
   --google-tags 'http-server' \
-  --google-machine-image https://www.googleapis.com/compute/v1/project
-s/ubuntu-os-cloud/global/images/family/ubuntu-1604-lts \
+  --google-machine-image https://www.googleapis.com/compute/v1/projects/ubunt
+u-os-cloud/global/images/family/ubuntu-1604-lts \
   gcp-host
 
 ```
+]
 
 ---
 ## 実行環境の作成
 
+.zoom1[
 Docker実行環境の確認
 
 ```console
@@ -179,14 +191,24 @@ $ docker-machine ssh gcp-host
 コンテナの起動
 
 ```console
-docker-user@gcp-host:~/ $ sudo docker container run --name webserver -it
--p 80:80 asashiho/photoview-image
+docker-user@gcp-host:~/ $ sudo docker container run --name webserver -it -p 
+80:80 asashiho/photoview-image
 ```
+]
 
 ---
+.zoom1[
 ## ブラウザからアクセス
 
 ![SampleHP](SampleHP.png)
+]
+
+---
+## 注意点
+
+VPCネットワークのファイアウォール ルールでhttpアクセスを許可しないと、ブラウザでアクセスできない
+
+![FirewallRule](FirewallRule.png)
 
 ---
 ## 参考  
