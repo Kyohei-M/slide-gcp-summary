@@ -1,3 +1,3 @@
-# slide-gcp-summary
-Slide for the LT about GCP, which is created by remark.js  
-[Slideshow](https://kyohei-m.github.io/slide-gcp-summary/)
+# slides-gcp-summary
+Slides for the LT about GCP, which are created using remark.js  
+[Slideshow](https://kyohei-m.github.io/slides-gcp-summary/)
